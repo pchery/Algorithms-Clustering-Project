@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d6770552-8d7f-4ace-b3cb-7a574dfdf888" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/K-means.py" afterPath="$PROJECT_DIR$/K-means.py" />
-    </list>
+    <list default="true" id="d6770552-8d7f-4ace-b3cb-7a574dfdf888" name="Default" comment="" />
     <ignored path="K-MeansClustering.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
