@@ -54,12 +54,19 @@ def generateCentroids(k, matrix):
             d = len(matrix)
     return centroids
 
+
+
+
 #print averageLocation([(1,2), (1,1)])
 #print generateCentroids(3, 5)
-print distanceD(2, [0,0], [1,0])
-print distanceD(2, [0,0], [1,1])
-print distanceD(3, [0,0,0], [1,1,1])
+#print(distanceD(2, [0,0], [1,0]))
+#print(distanceD(2, [0,0], [1,1]))
+#print(distanceD(3, [0,0,0], [1,1,1]))
 
-print averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]])
+#print(averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]]))
 
-print generateCentroids(2, [[1,1,1],[2,2,2]])
+print(generateCentroids2(2, [[1,1,1],[2,2,2]]))
+
+print(generateCentroids2(3, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3]]))
+
+print(generateCentroids2(4, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3],[4,4,4],[4,4,4]]))
