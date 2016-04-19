@@ -1,6 +1,5 @@
-
 import random
-
+import math
 
 
 #def kmeans(A, k):
@@ -44,22 +43,42 @@ def averageLocation(d, matrix):
 def generateCentroids(k, matrix):
     centroids = []
     d = len(matrix)
+    print("math ", int(math.ceil(1.66)))
     centroidVectors = []
-    for i in range(0, d):
-            centroidVectors.append(matrix[i])
-            if ((i % (d / k) == 0 and i != 0) or (i == d)):
-                centroids.append(averageLocation(3,centroidVectors))
-                centroidVectors = []
-            #random.randint(0, d)
-            d = len(matrix)
+    random.shuffle(matrix)
+    print matrix
+    for i in range(0,k):
+        lo = int(math.ceil(float(d)/k)*(i))
+        print "lo", lo
+        hi = int(math.ceil(float(d)/k)*(i+1))
+        print "hi", hi
+        # if ((i == k - 1) and d%k != 0):
+        #     hi += 1
+        centroids.append(averageLocation(3, matrix[lo:hi]))
+        # for i in range(0, d):
+        #     centroidVectors.append(matrix[i])
+        #     print i
+        #     if ((i % (d / k) == 0 and i != 0) or (i == d)):
+        #         #print i
+        #         centroids.append(averageLocation(3,centroidVectors))
+        #         centroidVectors = []
+        #random.randint(0, d)
+        d = len(matrix)
     return centroids
+
+
+
 
 #print averageLocation([(1,2), (1,1)])
 #print generateCentroids(3, 5)
-print distanceD(2, [0,0], [1,0])
-print distanceD(2, [0,0], [1,1])
-print distanceD(3, [0,0,0], [1,1,1])
+#print(distanceD(2, [0,0], [1,0]))
+#print(distanceD(2, [0,0], [1,1]))
+#print(distanceD(3, [0,0,0], [1,1,1]))
 
-print averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]])
+#print(averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]]))
 
-print generateCentroids(2, [[1,1,1],[2,2,2]])
+print(generateCentroids(2, [[1,1,1],[2,2,2], [3,3,3], [1,1,1],[2,2,2]]))
+
+#print(generateCentroids(3, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3]]))
+
+#print(generateCentroids(4, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3],[4,4,4],[4,4,4]]))
