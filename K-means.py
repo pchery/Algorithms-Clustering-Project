@@ -6,13 +6,14 @@ def kmeans(k, matrix):
     centroids = generateCentroids(k, matrix)
     vectors = [[]]*len(matrix)
     masterDict = dict(zip(centroids,vectors)) #(keys, values)
-    #while( ):
-    for vector in matrix:
-        closestCentroid = findClosestCentroid(vector, centroids)
-        masterDict[closestCentroid].append(vector)
-    for i in len(centroids):
-
-        centroids[i] = averageLocation(3,masterDict[centroids[i]])
+    previousCentroids = []
+    while previousCentroids != centroids:
+        for vector in matrix:
+            previousCentroids = centroids
+            closestCentroid = findClosestCentroid(vector, centroids)
+            masterDict[closestCentroid].append(vector)
+        for i in len(centroids):
+            centroids[i] = averageLocation(masterDict[centroids[i]])
 
     return centroids
 
@@ -26,13 +27,14 @@ def kmeans(k, matrix):
 #     #move centroids to average location of points closest to it
     return centroid
 
-def distance(x,y, a, b):
-    dx = x - a
-    dy = y - b
-    distance = ((dx**2) + (dy**2))**0.5
-    return distance
+# def distance(x,y, a, b):
+#     dx = x - a
+#     dy = y - b
+#     distance = ((dx**2) + (dy**2))**0.5
+#     return distance
 
-def distanceD(d, A,B):
+def distance(A,B):
+    d = len(A)
     distance = 0
     for i in range(0,d):
         distance += (A[i] - B[i])**2
@@ -41,7 +43,8 @@ def distanceD(d, A,B):
 
 #print distance(1,5,2,6)
 
-def averageLocation(d, matrix):
+def averageLocation(matrix):
+    d = len(matrix[0])
     B = [0] * d
     for vector in matrix:
         for i in range(0, d):
@@ -64,7 +67,7 @@ def generateCentroids(k, matrix):
         print "hi", hi
         # if ((i == k - 1) and d%k != 0):
         #     hi += 1
-        centroids.append(averageLocation(3, matrix[lo:hi]))
+        centroids.append(averageLocation(matrix[lo:hi]))
         # for i in range(0, d):
         #     centroidVectors.append(matrix[i])
         #     print i
@@ -80,9 +83,9 @@ def generateCentroids(k, matrix):
 #NOT TESTED!!!!!!
 def findClosestCentroid(vector, centroids):
     closestCentroid = centroids[0]
-    closestDistance = distanceD(3, vector, closestCentroid)
+    closestDistance = distance(vector, closestCentroid)
     for i in  range (1, len(centroids)):
-        currentDistance = distanceD(3, vector, centroids[i])
+        currentDistance = distance(vector, centroids[i])
         if closestDistance > currentDistance:
             closestDistance = currentDistance
             closestCentroid = centroids[i]
@@ -98,7 +101,7 @@ def findClosestCentroid(vector, centroids):
 
 #print(averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]]))
 
-print(generateCentroids(2, [[1,1,1],[2,2,2], [3,3,3], [1,1,1],[2,2,2]]))
+print(kmeans(2, [[1,1,1],[2,2,2], [3,3,3], [1,1,1],[2,2,2]]))
 
 #print(generateCentroids(3, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3]]))
 
