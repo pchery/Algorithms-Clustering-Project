@@ -1,2 +1,2 @@
+from Tree import*
 
-__import__(Tree)
