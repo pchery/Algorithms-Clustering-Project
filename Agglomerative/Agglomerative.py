@@ -1,8 +1,21 @@
 #Agglomerative
 
-import node.py
+from node import Node
 
-def agglomerativeClustering(matrix):
+def agglomerativeClustering(data):
+    minDistance = 0
+    minNodes = Node(0, None, None), Node(0, None, None)
+    #while()
+    for i in range(len(data)):
+        for j in range (i+1, len(data)):
+            if (distance(data(i).value, data(j).value) < minDistance):
+                minDistance = distance(data(i).value, data(j).value)
+                minNodes = data(i), data(j)
+    data.remove(minNodes[0])
+    data.remove(minNodes[1])
+    parent = Node(0, minNodes[0], minNodes[1])
+    data.add(parent)
+
 
 
 
@@ -30,3 +43,4 @@ def averageLocation(matrix):
     for k in range(0, d):
         B[k] /= float(len(matrix))
     return B
+
