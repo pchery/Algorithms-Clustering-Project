@@ -2,19 +2,29 @@
 
 from node import Node
 
-def agglomerativeClustering(data):
+def agglomerativeClustering(data, k):
     minDistance = 0
     minNodes = Node(0, None, None), Node(0, None, None)
-    #while()
-    for i in range(len(data)):
-        for j in range (i+1, len(data)):
-            if (distance(data(i).value, data(j).value) < minDistance):
-                minDistance = distance(data(i).value, data(j).value)
-                minNodes = data(i), data(j)
-    data.remove(minNodes[0])
-    data.remove(minNodes[1])
-    parent = Node(0, minNodes[0], minNodes[1])
-    data.add(parent)
+    while len(data) > 5:
+        for i in range(len(data)):
+            for j in range (i+1, len(data)):
+                if (distance(data(i).value, data(j).value) < minDistance):
+                    minDistance = distance(data(i).value, data(j).value)
+                    minNodes = data(i), data(j)
+        data.remove(minNodes[0])
+        data.remove(minNodes[1])
+        parent = Node(averageLocation([minNodes[0].value,minNodes[1].value]), minNodes[0], minNodes[1])
+        data.add(parent)
+    return data
+
+def treeToArray(data):
+    vectorDict = {}
+    for i in len(data):
+        node = data[i]
+        while(node.hasChildren())
+
+
+
 
 
 
