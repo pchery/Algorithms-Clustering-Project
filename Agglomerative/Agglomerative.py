@@ -1,5 +1,21 @@
-#Agglomerative
+"""
+Paul Chery, Scott Pedersen and Mack Hartley
+Clustering Project
+COMP 221
+May 7, 2016
 
+This file contains our code for our implementation of Agglomerative 
+clustering. If you want to run our implementation on your own data set,
+call
+
+agglomerativeClustering(data, k)
+
+where k is the number of clusters you want generated and matrix is a n x d 
+matrix, or an array of n d-dimensional vectors. The function will return a 
+length k array, where each element of k corresponds to a list of vectors that
+were clustered together by the algorithm. 
+
+"""
 from node import *
 from scottPecans import *
 import sys
@@ -7,6 +23,10 @@ import sys
 
 
 def agglomerativeClustering(data, k):
+    """This function takes in a a list of vectors DATA and the number of
+    clusters K we want to split DATA into. The function will return a 
+    length k array, where each element of k corresponds to a list of vectors 
+    that were clustered together by the algorithm. """
     data = dataToNodeList(data)
     while len(data) > k:
         minDistance = sys.maxint
@@ -24,30 +44,18 @@ def agglomerativeClustering(data, k):
         data[i] = getLeaves(data[i])
     return data
 
-
-#
-# def treeToArray(data):
-#     vectorDict = {}
-#     for i in len(data):
-#         node = data[i]
-#         while(node.hasChildren()):
-
-
 def dataToNodeList(data):
+    """This function takes in a list of vectors DATA and returns a list where
+    each element is the root of a tree with no children with a value of some 
+    vector from data. """
     A = []
     for vector in data:
         A.append(Node(vector, None,None))
     return A
 
-
-#make every point into cluster
-#find closest points and merge them
-#continue until you have a tree
-
-
-#plot dendogram
-
 def distance(A,B):
+    """This fucntion takes in two vectors A and B and return the euclidean
+    distance between them in len(A) space. A and B are the same length. """
     d = len(A)
     distance = 0
     for i in range(0,d):
@@ -56,6 +64,10 @@ def distance(A,B):
 
 
 def averageLocation(nodeTuple):
+    """This function takes in a tuple of two nodes that hold nodes that 
+    are the roots of a tree where the leaves are vectors. The root contains 
+    the centroid of the leaves as its value. The function returns the centroid
+    for the leaves of both of these roots. """
     d = len(nodeTuple[0].value)
     B = [0] * d
     for node in nodeTuple:
