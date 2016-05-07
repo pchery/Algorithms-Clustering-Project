@@ -26,9 +26,9 @@ class Node:
         """This function returns TRUE if the node has children, and false if
         it does not. """
         if(self.rightChild != None and self.leftChild != None):
-            return True
+            return True #Has children
         else:
-            return False
+            return False #Doesn't have children
 
 
 
@@ -40,7 +40,7 @@ def getLeaves(tree):
     of an inputted tree TREE. """
     if(tree.rightChild == None and tree.leftChild == None):
         return [tree.value]
-    return getLeaves(tree.leftChild) + getLeaves(tree.rightChild)
+    return getLeaves(tree.leftChild) + getLeaves(tree.rightChild) #Recursively searches for leaves
 
 
 rightChild = Node(12, None, None)
