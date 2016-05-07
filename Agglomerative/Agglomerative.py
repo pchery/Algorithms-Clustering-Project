@@ -17,7 +17,7 @@ were clustered together by the algorithm.
 
 """
 from node import *
-from scottPecans import *
+from dataManipulation import *
 import sys
 
 
@@ -85,4 +85,4 @@ result = agglomerativeClustering(kellogMatrix, 6)
 for k in range(0, 6):
     print("CLUSTER " + str(k) + " : ")
     for i in range (len(result[k])):
-        print getNameOfCereal(result[k][i])
+        print (getNameOfCereal(result[k][i]))

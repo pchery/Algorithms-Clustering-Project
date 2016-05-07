@@ -51,4 +51,4 @@ z = Node(2, y,x)
 
 # print(x.leftChild.value)
 # print(x.rightChild.value)
-print getLeaves(z)
+print (getLeaves(z))
