@@ -33,15 +33,18 @@ def kmeans(k, matrix):
         masterDict[i] = []  #(keys, values)
     previousCentroids = []
     j = 0
-    while previousCentroids != centroids:
+    while previousCentroids != centroids: #Continues until the centroids have settled
         for i in range(len(matrix)):
             previousCentroids = centroids
-            closestCentroidIndex = findClosestCentroid(matrix[i], centroids)
+            closestCentroidIndex = findClosestCentroid(matrix[i], centroids) #Gets closest cent
             masterDict[closestCentroidIndex].append(matrix[i])
-        for i in range(len(centroids)):
+        for i in range(len(centroids)): #Obtains the average locations of the centroids
             if(centroids[i] != []):
                 centroids[i] = averageLocation(masterDict[i])
+    print (centroids)
+    print (masterDict)
     return masterDict
+
 
 def distance(A,B):
     """This function takes in two vectors A and B and returns the euclidean 
@@ -49,7 +52,7 @@ def distance(A,B):
     same length. """
     d = len(A)
     distance = 0
-    for i in range(0,d):
+    for i in range(0,d): #Calculates distance for any dimention
         distance += (A[i] - B[i])**2
     return distance**0.5
 
@@ -60,11 +63,11 @@ def averageLocation(matrix):
     """This function takes in an array of vectors and returns a vector where
     each element is the average of that element from every vector in the input
     array MATRIX. """
-    d = len(matrix[0])
-    B = [0] * d
+    d = len(matrix[0]) #Number of dimensions
+    B = [0] * d #Return array
     for vector in matrix:
         for i in range(0, d):
-            B[i] += vector[i]
+            B[i] += vector[i] #Calculates return vector
     for k in range(0, d):
         B[k] /= float(len(matrix))
     return B
@@ -75,15 +78,15 @@ def generateCentroids(k, matrix):
     MATRIX. It then randomly generates K centroids calculated from approximately
     the same number of vectors. """
     centroids = []
-    d = len(matrix)
+    d = len(matrix) #Obtains dimension of vectors
     random.shuffle(matrix)
     for i in range(0,k):
-        lo = int(math.ceil(float(d)/k)*(i))
+        lo = int(math.ceil(float(d)/k)*(i)) #Calculates for random location
         hi = int(math.ceil(float(d)/k)*(i+1))
         if(matrix[lo:hi] != []):
-            centroids.append(averageLocation(matrix[lo:hi]))
+            centroids.append(averageLocation(matrix[lo:hi])) #Sets new location
         d = len(matrix)
-    return centroids
+    return centroids #Returns randomly generated centroids
 
 
 def findClosestCentroid(vector, centroids):
@@ -91,15 +94,15 @@ def findClosestCentroid(vector, centroids):
     and returns the index of the centroid with the smallest euclidean distance
     from VECTOR. """
     closestCentroid = centroids[0]
-    closestCentroidIndex = 0;
+    closestCentroidIndex = 0; #Initialize the index of the closest centroid to first
     closestDistance = distance(vector, closestCentroid)
-    for i in  range (1, len(centroids)):
+    for i in  range (1, len(centroids)): #Iterate through centroids
         currentDistance = distance(vector, centroids[i])
-        if closestDistance > currentDistance:
+        if closestDistance > currentDistance: #If a closer centroid is found, update
             closestDistance = currentDistance
             closestCentroid = centroids[i]
             closestCentroidIndex = i
-    return closestCentroidIndex
+    return closestCentroidIndex #Return index of closest centroid
 
 
 #Manually generated data set for testing
@@ -133,7 +136,7 @@ dict = kmeans(5, kellogMatrix)
 for k in range(0, 5):
     print("CLUSTER " + str(k) + " : ")
     for i in range (len(dict[k])):
-        print getNameOfCereal(dict[k][i])
+        print (getNameOfCereal(dict[k][i]))
 
 
 
