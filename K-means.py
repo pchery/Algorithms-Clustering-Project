@@ -1,6 +1,6 @@
 import random
 import math
-
+from scottPecans import getNameOfCereal
 
 
 def kmeans(k, matrix):
@@ -25,10 +25,7 @@ def kmeans(k, matrix):
         for i in range(len(centroids)):
             if(centroids[i] != []):
                 centroids[i] = averageLocation(masterDict[i])
-
-    print centroids
-    print masterDict
-    return centroids, masterDict
+    return masterDict
 
 #     Forgy method: randomly choose k observations as centroids
 #     Randome partitioning: randomly assigns a cluster to each observation
@@ -144,7 +141,13 @@ kellogMatrix = [
     [0.5455,  0.2, 0.3333, 0.2188, 0.0714, 0.1333, 1.0000, 0.5, 0.0645, 0.0],
     [0.5455,  1.0, 0.0000, 0.7188, 0.0714, 0.6000, 0.2000, 0.0, 0.1129, 0.0]]
 
-kmeans(2, kellogMatrix)
+dict = kmeans(5, kellogMatrix)
+for k in range(0, 5):
+    print("CLUSTER " + str(k) + " : ")
+    for i in range (len(dict[k])):
+        print getNameOfCereal(dict[k][i])
+
+
 # print(kmeans(2, kellogMatrix))
 #print(generateCentroids(3, [[1,1,1],[2,2,2],[1,1,1],[2,2,2],[3,3,3],[3,3,3]]))
 
