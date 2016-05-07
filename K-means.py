@@ -19,7 +19,7 @@ to that vector.
 
 import random
 import math
-from scottPecans import getNameOfCereal
+from dataManipulation import getNameOfCereal
 
 
 def kmeans(k, matrix):
