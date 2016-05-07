@@ -4,6 +4,11 @@ class Node:
         self.value = value;
         self.leftChild = leftChild;
         self.rightChild = rightChild;
+        if(self.leftChild == None or self.rightChild == None):
+           self.numLeaves = 1
+        else:
+            self.numLeaves = leftChild.numLeaves + rightChild.numLeaves;
+
 
     def hasChildren(self):
         if(self.rightChild != None and self.leftChild != None):
@@ -15,21 +20,19 @@ class Node:
 
 
 
-def traverse(tree, A):
-    if(tree.rightChild == None or tree.leftChild == None):
-        return tree, []
-    else:
-        leftNode = traverse(tree.leftChild,A), A
-        rightNode = traverse(tree.rightChild,A), A
-        A.append(leftNode[0].value, rightNode[0].value)
-    return None, A
+
+def getLeaves(tree):
+    if(tree.rightChild == None and tree.leftChild == None):
+        return [tree.value]
+    return getLeaves(tree.leftChild) + getLeaves(tree.rightChild)
 
 
 rightChild = Node(12, None, None)
 leftChild = Node(11, None, None)
 x = Node(15, leftChild,rightChild)
+y = Node(10, x,x)
+z = Node(2, y,x)
 
-
-print(x.leftChild.value)
-print(x.rightChild.value)
-print traverse(x, [])
+# print(x.leftChild.value)
+# print(x.rightChild.value)
+print getLeaves(z)
