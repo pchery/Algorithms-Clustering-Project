@@ -105,17 +105,6 @@ def findClosestCentroid(vector, centroids):
     return closestCentroidIndex #Return index of closest centroid
 
 
-
-#print averageLocation([(1,2), (1,1)])
-#print generateCentroids(3, 5)
-#print(distanceD(2, [0,0], [1,0]))
-#print(distanceD(2, [0,0], [1,1]))
-#print(distanceD(3, [0,0,0], [1,1,1]))
-
-#print(averageLocation(3, [[0,0,0],[1,1,1], [1,1,1]]))
-
-# print(kmeans(3, [[2,2,2],[2,2,2], [4,4,4],[6,6,6]]))
-
 #Manually generated data set for testing
 kellogMatrix = [
     [0.1818, 0.6, 0.3333, 0.8125, 0.6429, 0.0000, 0.3333, 1.0, 0.9677, 0.0],
