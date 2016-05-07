@@ -17,7 +17,7 @@ were clustered together by the algorithm.
 
 """
 from node import *
-from dataManipulation import getNameOfCereals
+from dataManipulation import *
 import sys
 
 
