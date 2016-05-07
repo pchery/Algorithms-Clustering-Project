@@ -42,8 +42,8 @@ def kmeans(k, matrix):
             if(centroids[i] != []):
                 centroids[i] = averageLocation(masterDict[i])
 
-    print centroids
-    print masterDict
+    print (centroids)
+    print (masterDict)
     return centroids, masterDict
 
 def distance(A,B):
